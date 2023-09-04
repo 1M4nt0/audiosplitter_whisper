@@ -7,7 +7,6 @@ import torch
 import re
 import shutil
 import unicodedata
-from tkinter import filedialog
 from pydub import AudioSegment
 
 AUDIO_EXT = ".wav"
@@ -168,14 +167,9 @@ def merge_segments(output_dir):
 
         os.rmdir(folder_path)  # Remove the original directory after all its segments have been moved
 
-def select_input_folder():
-    root = tk.Tk()
-    root.withdraw()
-    return filedialog.askdirectory(title="Select input folder").replace("/","\\")
-
 
 def main():
-    input_folder = select_input_folder()
+    input_folder = "./data"
     settings = load_settings(CONFIG_PATH)
     process_audio_files(input_folder, settings)
     
